@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VSD PWA Test</title>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#4285f4" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 40px;
+      }
+      .version {
+        font-weight: bold;
+        color: #4285f4;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 20px;
+        background-color: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>VSD PWA Test</h1>
+    <p>
+      Current Version: <span class="version" id="versionNumber">1.0.0</span>
+    </p>
+    <p id="onlineStatus">Online Status: Checking...</p>
+    <button id="checkUpdates">Check for Updates</button>
+
+    <script src="app.js"></script>
+    <script>
+      // Register service worker
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((reg) =>
+              console.log("Service Worker registered with scope:", reg.scope),
+            )
+            .catch((err) =>
+              console.error("Service Worker registration failed:", err),
+            );
+        });
+      }
+    </script>
+  </body>
+</html>
