@@ -7,10 +7,10 @@ services:
       - ./html:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.blog.rule=Host(`vsd.thib.app`)"
-      - "traefik.http.routers.blog.entrypoints=websecure"
-      - "traefik.http.routers.blog.tls.certresolver=myresolver"
-      - "traefik.http.services.blog.loadbalancer.server.port=80"
+      - "traefik.http.routers.vsd.rule=Host(`vsd.thib.app`)"
+      - "traefik.http.routers.vsd.entrypoints=websecure"
+      - "traefik.http.routers.vsd.tls.certresolver=myresolver"
+      - "traefik.http.services.vsd.loadbalancer.server.port=80"
     networks:
       - traefik
 
